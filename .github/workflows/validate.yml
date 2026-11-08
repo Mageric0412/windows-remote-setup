@@ -1,0 +1,16 @@
+name: Windows validation
+on: [push, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  validate:
+    strategy:
+      matrix:
+        os: [windows-2022, windows-2025]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: PowerShell 5.1 syntax, platform, hash and Windows service tests
+        shell: powershell
+        run: ./tests/validate.ps1

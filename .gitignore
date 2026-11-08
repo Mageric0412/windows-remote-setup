@@ -1,0 +1,5 @@
+dist/
+packages/
+*.log
+*.msi
+*.zip
